@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 const AuthContext = createContext();
 
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
             };
 
             const { data } = await axios.post(
-                'http://localhost:5000/api/auth/login',
+                `${API_BASE_URL}/api/auth/login`,
                 { email, password },
                 config
             );

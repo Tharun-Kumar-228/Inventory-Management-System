@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 import AuthContext from '../context/AuthContext';
 
 const Users = () => {
@@ -18,7 +19,7 @@ const Users = () => {
     const fetchUsers = async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get('http://localhost:5000/api/auth/users', config);
+            const { data } = await axios.get('${API_BASE_URL}/api/auth/users', config);
             setUsers(data);
             setLoading(false);
         } catch (error) {
@@ -42,7 +43,7 @@ const Users = () => {
         setMessage(null);
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.post('http://localhost:5000/api/auth/register', formData, config);
+            await axios.post('${API_BASE_URL}/api/auth/register', formData, config);
             setMessage({ type: 'success', text: 'User created successfully!' });
             setShowForm(false);
             setFormData({ name: '', email: '', password: '', role: 'staff' });
@@ -57,7 +58,7 @@ const Users = () => {
         if (window.confirm('Are you sure you want to delete this user?')) {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                await axios.delete(`http://localhost:5000/api/auth/users/${id}`, config);
+                await axios.delete(``${API_BASE_URL}/api/auth/users/${id}`, config);
                 fetchUsers();
             } catch (error) {
                 console.error(error);

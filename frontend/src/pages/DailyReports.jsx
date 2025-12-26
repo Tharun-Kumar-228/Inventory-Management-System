@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 import AuthContext from '../context/AuthContext';
 
 const DailyReports = () => {
@@ -11,7 +12,7 @@ const DailyReports = () => {
         const fetchReports = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5000/api/sales/daily', config);
+                const { data } = await axios.get('${API_BASE_URL}/api/sales/daily', config);
                 setReports(data);
                 setLoading(false);
             } catch (error) {
@@ -34,7 +35,7 @@ const DailyReports = () => {
                 <button
                     onClick={async () => {
                         try {
-                            const response = await axios.get('http://localhost:5000/api/sales/export', {
+                            const response = await axios.get('${API_BASE_URL}/api/sales/export', {
                                 headers: { Authorization: `Bearer ${user.token}` },
                                 responseType: 'blob',
                             });

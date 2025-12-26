@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 import AuthContext from '../context/AuthContext';
 
 const Sales = () => {
@@ -16,7 +17,7 @@ const Sales = () => {
     const fetchProducts = async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get('http://localhost:5000/api/products', config);
+            const { data } = await axios.get('${API_BASE_URL}/api/products', config);
             setProducts(data);
             setFilteredProducts(data);
         } catch (error) {
@@ -89,7 +90,7 @@ const Sales = () => {
                 }))
             };
 
-            const { data } = await axios.post('http://localhost:5000/api/bills', billData, config);
+            const { data } = await axios.post('${API_BASE_URL}/api/bills', billData, config);
 
             setLastBill(data);
             alert('Bill Created Successfully!');

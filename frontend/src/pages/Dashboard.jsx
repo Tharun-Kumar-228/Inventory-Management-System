@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
+import API_BASE_URL from '../config/api';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -34,7 +35,7 @@ const Dashboard = () => {
                 const config = {
                     headers: { Authorization: `Bearer ${user.token}` },
                 };
-                const { data } = await axios.get('http://localhost:5000/api/sales/stats', config);
+                const { data } = await axios.get(`${API_BASE_URL}/api/sales/stats`, config);
                 setStats(data);
                 setLoading(false);
             } catch (error) {
