@@ -17,7 +17,7 @@ const Sales = () => {
     const fetchProducts = async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get('${API_BASE_URL}/api/products', config);
+            const { data } = await axios.get(`${API_BASE_URL}/api/products`, config);
             setProducts(data);
             setFilteredProducts(data);
         } catch (error) {
@@ -90,7 +90,7 @@ const Sales = () => {
                 }))
             };
 
-            const { data } = await axios.post('${API_BASE_URL}/api/bills', billData, config);
+            const { data } = await axios.post(`${API_BASE_URL}/api/bills`, billData, config);
 
             setLastBill(data);
             alert('Bill Created Successfully!');

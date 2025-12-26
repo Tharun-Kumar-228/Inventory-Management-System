@@ -23,7 +23,7 @@ const Products = () => {
     const fetchProducts = async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get('${API_BASE_URL}/api/products', config);
+            const { data } = await axios.get(`${API_BASE_URL}/api/products`, config);
             setProducts(data);
             setLoading(false);
         } catch (error) {
@@ -46,9 +46,9 @@ const Products = () => {
 
         try {
             if (editId) {
-                await axios.put(``${API_BASE_URL}/api/products/${editId}`, formData, config);
+                await axios.put(`${API_BASE_URL}/api/products/${editId}`, formData, config);
             } else {
-                await axios.post('${API_BASE_URL}/api/products', formData, config);
+                await axios.post(`${API_BASE_URL}/api/products`, formData, config);
             }
             setShowForm(false);
             setEditId(null);
@@ -76,7 +76,7 @@ const Products = () => {
         if (window.confirm('Are you sure you want to delete this product?')) {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                await axios.delete(``${API_BASE_URL}/api/products/${id}`, config);
+                await axios.delete(`${API_BASE_URL}/api/products/${id}`, config);
                 fetchProducts();
             } catch (error) {
                 console.error(error);
@@ -236,7 +236,7 @@ const Products = () => {
                                         try {
                                             const config = { headers: { Authorization: `Bearer ${user.token}` } };
                                             console.log('Sending restock request...');
-                                            await axios.post(``${API_BASE_URL}/api/products/${restockItem._id}/restock`, {
+                                            await axios.post(`${API_BASE_URL}/api/products/${restockItem._id}/restock`, {
                                                 quantity: restockQty,
                                                 remarks: 'Manual Restock'
                                             }, config);
