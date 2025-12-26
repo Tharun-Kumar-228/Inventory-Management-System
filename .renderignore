@@ -1,3 +1,0 @@
-# Ignore root package.json to prevent auto-detection
-package.json
-package-lock.json
