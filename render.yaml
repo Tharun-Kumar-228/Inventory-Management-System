@@ -5,6 +5,7 @@ services:
     region: oregon
     plan: free
     buildCommand: cd backend && npm ci --prefer-offline && cd ../frontend && npm ci --prefer-offline && npm run build && cd ..
+    startCommand: node backend/server.js
     envVars:
       - key: NODE_ENV
         value: production
