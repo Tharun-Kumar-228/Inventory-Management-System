@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd backend && npm install --prefer-offline --no-audit && cd ../frontend && npm install --prefer-offline --no-audit && npm run build",
+    "manual-build": "cd backend && npm install --prefer-offline --no-audit && cd ../frontend && npm install --prefer-offline --no-audit && npm run build",
     "start": "node backend/server.js",
     "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && nodemon server.js\""
   },
